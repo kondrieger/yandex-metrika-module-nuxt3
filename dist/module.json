@@ -1,0 +1,8 @@
+{
+  "name": "@nuxtjs/yandex-metrika",
+  "version": "1.4.0",
+  "configKey": "yandexMetrika",
+  "compatibility": {
+    "bridge": true
+  }
+}
