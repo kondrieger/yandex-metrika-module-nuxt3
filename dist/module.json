@@ -1,5 +1,5 @@
 {
-  "name": "@nuxtjs/yandex-metrika",
+  "name": "yandex-metrika-module-nuxt3",
   "version": "1.4.0",
   "configKey": "yandexMetrika",
   "compatibility": {

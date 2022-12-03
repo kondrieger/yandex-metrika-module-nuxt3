@@ -49,7 +49,7 @@ defu.arrayFn = extend((obj, key, currentValue, _namespace) => {
 });
 defu.extend = extend;
 
-const name = "@nuxtjs/yandex-metrika";
+const name = "yandex-metrika-module-nuxt3";
 const version = "1.4.0";
 
 const logger = useLogger("nuxt:yandex-metrika");

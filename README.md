@@ -113,11 +113,11 @@ For more information:
 [MIT License](./LICENSE) - Copyright (c) Nuxt Community
 
 <!-- Badges -->
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/yandex-metrika/latest.svg?style=flat-square
-[npm-version-href]: https://npmjs.com/package/@nuxtjs/yandex-metrika
+[npm-version-src]: https://img.shields.io/npm/v/yandex-metrika-module-nuxt3/latest.svg?style=flat-square
+[npm-version-href]: https://npmjs.com/package/yandex-metrika-module-nuxt3
 
-[npm-downloads-src]: https://img.shields.io/npm/dt/@nuxtjs/yandex-metrika.svg?style=flat-square
-[npm-downloads-href]: https://npmjs.com/package/@nuxtjs/yandex-metrika
+[npm-downloads-src]: https://img.shields.io/npm/dt/yandex-metrika-module-nuxt3.svg?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/yandex-metrika-module-nuxt3
 
-[license-src]: https://img.shields.io/npm/l/@nuxtjs/yandex-metrika.svg?style=flat-square
-[license-href]: https://npmjs.com/package/@nuxtjs/yandex-metrika
+[license-src]: https://img.shields.io/npm/l/yandex-metrika-module-nuxt3.svg?style=flat-square
+[license-href]: https://npmjs.com/package/yandex-metrika-module-nuxt3
