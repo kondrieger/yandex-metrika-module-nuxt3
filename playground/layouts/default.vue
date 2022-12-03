@@ -22,7 +22,4 @@
 </template>
 
 <script setup>
-definePageMeta({
-  title: 'Demo Page of Yandex Metrika'
-})
 </script>
