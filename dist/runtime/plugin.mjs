@@ -21,7 +21,11 @@ export default defineNuxtPlugin(async ({ _ }) => {
           (m[i].a = m[i].a || []).push(arguments);
         };
         m[i].l = 1 * new Date();
-        k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a);
+        k = e.createElement(t);
+        a = e.getElementsByTagName(t)[0];
+        k.async = 1;
+        k.src = r;
+        a.parentNode.insertBefore(k, a);
       })(window, document, "script", metrikaUrl, "ym");
       ym(id, "init", metrikaOptions);
     }

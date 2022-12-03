@@ -7,7 +7,7 @@
 
 This package is a fork for those who don't want to wait for the official release of a Yandex Metrika module.
 
-The module is created by Nuxt Community and upgraded by dankerow to support Nuxt 3. All credit belongs to:
+The module was created by Nuxt Community and rewritten by dankerow to support Nuxt 3. All credit belongs to:
 
 - [Official Nuxt Community module for Yandex Metrika](https://github.com/nuxt-community/yandex-metrika-module)
 - [dankerow's fork of Yandex Metrika to support Nuxt 3](https://github.com/dankerow/yandex-metrika-module)
@@ -105,9 +105,9 @@ For more information:
 ## Development
 
 - Clone this repository
-- Install dependencies using `pnpm install`
-- Run `pnpm dev:prepare` to generate type stubs.
-- Use `pnpm dev` to start [playground](./playground) in development mode.
+- Install dependencies using `yarn install`
+- Run `yarn dev:prepare` to generate type stubs.
+- Use `yarn dev` to start [playground](./playground) in development mode.
 
 ## License
 

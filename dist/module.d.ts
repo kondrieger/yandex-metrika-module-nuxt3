@@ -1,6 +1,7 @@
 import * as _nuxt_schema from '@nuxt/schema';
+import { ModuleOptions } from '@nuxt/schema';
 
-interface ModuleOptions {
+interface YandexMetrikaModuleOptions extends ModuleOptions {
     id?: string;
     metrikaUrl?: string;
     accurateTrackBounce?: boolean | number;
@@ -19,12 +20,6 @@ interface ModuleOptions {
     webvisor?: boolean;
     triggerEvent?: boolean;
 }
-declare const CONFIG_KEY = "yandexMetrika";
-declare module '@nuxt/schema' {
-    interface PublicRuntimeConfig {
-        [CONFIG_KEY]?: ModuleOptions;
-    }
-}
-declare const _default: _nuxt_schema.NuxtModule<ModuleOptions>;
+declare const _default: _nuxt_schema.NuxtModule<YandexMetrikaModuleOptions>;
 
-export { ModuleOptions, _default as default };
+export { YandexMetrikaModuleOptions, _default as default };

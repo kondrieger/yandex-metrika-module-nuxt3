@@ -1,9 +1,10 @@
 import { fileURLToPath } from 'url'
 import { resolve } from 'pathe'
 import { defineNuxtModule, addPlugin, addTemplate, isNuxt2, useLogger } from '@nuxt/kit'
+import { ModuleOptions } from '@nuxt/schema'
 import defu from 'defu'
 
-export interface ModuleOptions {
+export interface YandexMetrikaModuleOptions extends ModuleOptions {
   id?: string,
   metrikaUrl?: string,
   accurateTrackBounce?: boolean | number,
@@ -26,9 +27,9 @@ export interface ModuleOptions {
 const logger = useLogger('nuxt:yandex-metrika')
 const CONFIG_KEY = 'yandexMetrika'
 
-export default defineNuxtModule<ModuleOptions>({
+export default defineNuxtModule<YandexMetrikaModuleOptions>({
   meta: {
-    name: '@nuxtjs/yandex-metrika',
+    name: 'yandex-metrika-module-nuxt3',
     configKey: CONFIG_KEY,
     compatibility: {
       bridge: true
@@ -77,13 +78,21 @@ export default defineNuxtModule<ModuleOptions>({
 
     const getMeta = () => {
       if (isNuxt2()) {
+        // @ts-ignore
         nuxt.options.head = nuxt.options.head || {}
+
+        // @ts-ignore
         nuxt.options.head.link = nuxt.options.head.link || []
       } else {
         nuxt.options.app.head.link = nuxt.options.app.head.link || []
       }
 
-      return isNuxt2() ? nuxt.options.head : nuxt.options.app.head
+      if (isNuxt2()) {
+        // @ts-ignore
+        return nuxt.options.head
+      } else {
+        return nuxt.options.app.head
+      }
     }
 
     // Script preload

@@ -30,7 +30,8 @@
     "dev:build": "nuxi dev playground",
     "dev:prepare": "pnpm build --stub && nuxi prepare playground",
     "prepack": "pnpm build",
-    "lint": "eslint --ext .js,.ts,.vue ."
+    "lint": "eslint --ext .js,.ts,.vue .",
+    "lint:fix": "eslint --fix --ext .js,.ts,.vue ."
   },
   "publishConfig": {
     "access": "public"
