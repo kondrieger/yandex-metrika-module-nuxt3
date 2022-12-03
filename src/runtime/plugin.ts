@@ -1,5 +1,5 @@
 import { defineNuxtPlugin, useRuntimeConfig } from '#app'
-import { isVue2, useRouter } from '#imports'
+import { useRouter } from '#imports'
 import options from '#build/yandex-metrika.options.mjs'
 
 export default defineNuxtPlugin(async ({ _ }) => {
@@ -9,15 +9,9 @@ export default defineNuxtPlugin(async ({ _ }) => {
   const basePath = useRuntimeConfig().app.basePath
 
   // Mark when the router has completed the initial navigation.
-  if (isVue2) {
-    useRouter().onReady(() => {
-      ready = true
-    })
-  } else {
-    useRouter().isReady().then(() => {
-      ready = true
-    })
-  }
+  useRouter().isReady().then(() => {
+    ready = true
+  })
 
   function create () {
     if (!ready) {

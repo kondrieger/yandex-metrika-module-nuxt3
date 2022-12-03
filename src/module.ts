@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url'
 import { resolve } from 'pathe'
-import { defineNuxtModule, addPlugin, addTemplate, isNuxt2, useLogger } from '@nuxt/kit'
+import { defineNuxtModule, addPlugin, addTemplate, useLogger } from '@nuxt/kit'
 import { ModuleOptions } from '@nuxt/schema'
 import defu from 'defu'
 
@@ -32,7 +32,7 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
     name: 'yandex-metrika-module-nuxt3',
     configKey: CONFIG_KEY,
     compatibility: {
-      bridge: true
+      nuxt: '>=3.0.0'
     }
   },
   defaults: {
@@ -77,22 +77,8 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
     })
 
     const getMeta = () => {
-      if (isNuxt2()) {
-        // @ts-ignore
-        nuxt.options.head = nuxt.options.head || {}
-
-        // @ts-ignore
-        nuxt.options.head.link = nuxt.options.head.link || []
-      } else {
-        nuxt.options.app.head.link = nuxt.options.app.head.link || []
-      }
-
-      if (isNuxt2()) {
-        // @ts-ignore
-        return nuxt.options.head
-      } else {
-        return nuxt.options.app.head
-      }
+      nuxt.options.app.head.link = nuxt.options.app.head.link || []
+      return nuxt.options.app.head
     }
 
     // Script preload
