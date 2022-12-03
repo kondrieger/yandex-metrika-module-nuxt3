@@ -4,6 +4,7 @@
 [![License][license-src]][license-href]
 
 ## Disclaimer
+
 This package is a fork for those who don't want to wait for the official release of a Yandex Metrika module.
 
 The module is created by Nuxt Community and upgraded by dankerow to support Nuxt 3. All credit belongs to:
@@ -35,7 +36,7 @@ You can set environment variable `NODE_ENV` to `production` for testing in dev m
 
 You can pass options directly in module declaration:
 
-```js
+```ts
 {
   modules: [
     [
@@ -55,7 +56,7 @@ You can pass options directly in module declaration:
 
 Or you can specify `yandexMetrika` key:
 
-```js
+```ts
 {
   modules: ['yandex-metrika-module-nuxt3'],
   yandexMetrika: {
@@ -104,13 +105,13 @@ For more information:
 ## Development
 
 - Clone this repository
-- Install dependencies using `yarn install` or `npm install`
-- Run `yarn dev:setup` to generate type stubs.
-- Use `yarn dev` to start [playground](./playground) in development mode.
+- Install dependencies using `pnpm install`
+- Run `pnpm dev:prepare` to generate type stubs.
+- Use `pnpm dev` to start [playground](./playground) in development mode.
 
 ## License
 
-[MIT License](./LICENSE) - Copyright (c) Nuxt Community
+[MIT License](./LICENSE)
 
 <!-- Badges -->
 [npm-version-src]: https://img.shields.io/npm/v/yandex-metrika-module-nuxt3/latest.svg?style=flat-square

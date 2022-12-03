@@ -15,10 +15,9 @@
     ".": {
       "import": "./dist/module.mjs",
       "require": "./dist/module.cjs"
-    },
-    "./dist/runtime/*": "./dist/runtime/*",
-    "./runtime/*": "./dist/runtime/*"
+    }
   },
+  "type": "module",
   "main": "./dist/module.cjs",
   "module": "./dist/module.mjs",
   "types": "./dist/types.d.ts",
@@ -28,25 +27,27 @@
   "scripts": {
     "build": "nuxt-module-build",
     "dev": "nuxi dev playground",
-    "dev:setup": "nuxt-module-build --stub && nuxi prepare playground",
-    "prepack": "yarn build",
-    "lint": "eslint --ext .js,.ts,.vue .",
-    "test": "yarn lint"
+    "dev:build": "nuxi dev playground",
+    "dev:prepare": "pnpm build --stub && nuxi prepare playground",
+    "prepack": "pnpm build",
+    "lint": "eslint --ext .js,.ts,.vue ."
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@nuxt/kit": "npm:@nuxt/kit-edge@latest"
+    "@nuxt/kit": "^3.0.0",
+    "defu": "^6.1.1",
+    "pathe": "^1.0.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "latest",
     "@nuxtjs/eslint-config-typescript": "latest",
-    "@release-it/conventional-changelog": "^4.2.0",
+    "@release-it/conventional-changelog": "^4.3.0",
     "@types/node": "latest",
     "eslint": "latest",
-    "nuxt3": "latest",
-    "release-it": "^14.12.5"
+    "nuxt": "^3.0.0",
+    "release-it": "^14.14.3"
   },
-  "packageManager": "yarn@3.2.0"
+  "packageManager": "pnpm@7.17.1"
 }
