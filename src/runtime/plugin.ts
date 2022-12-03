@@ -15,9 +15,6 @@ export default defineNuxtPlugin(async ({ _ }) => {
 
   function create () {
     if (!ready) {
-      if (consoleLog) {
-        console.log(`Yandex Metrika initialized in ${isDev ? 'development' : 'production'} mode. Metrika URL: ${metrikaUrl}`)
-      }
       if (!isDev) {
         // Don't record a duplicate hit for the initial navigation.
         (function (m, e, t, r, i, k, a) {
@@ -29,13 +26,20 @@ export default defineNuxtPlugin(async ({ _ }) => {
           k.src = r
           a.parentNode.insertBefore(k, a)
         })(window, document, 'script', metrikaUrl, 'ym')
+        yandexMetrikaInstance = ym
         ym(id, 'init', metrikaOptions)
+      }
+      if (consoleLog) {
+        console.log(`Yandex Metrika initialized in ${isDev ? 'development' : 'production'} mode. ID=${id}. Options: ${JSON.stringify(metrikaOptions)}`)
       }
     }
 
     useRouter().afterEach((to, from) => {
+      if (to.fullPath === from.fullPath) {
+        return
+      }
       if (consoleLog) {
-        console.log(`Yandex Metrika page hit: ${to.fullPath}`)
+        console.log(`Yandex Metrika page hit: "${to.fullPath}" (referer="${from.fullPath}", title="${to.meta.title}")`)
       }
       if (!isDev) {
         ym(id, 'hit', to.fullPath, {
@@ -48,5 +52,30 @@ export default defineNuxtPlugin(async ({ _ }) => {
 
   if (window.ym === undefined) {
     create()
+  }
+
+  return {
+    provide: {
+      ym: (method: string, ...args: any[]) => {
+        if (window.ym) {
+          ym.apply(null, [id, method, ...args])
+          if (consoleLog) {
+            if (args.length === 0) {
+              console.log(`Yandex Metrika call: ym("${id}", "${method}")`)
+            } else {
+              const argumentsText = args.map(a => JSON.stringify(a)).join(', ')
+              console.log(`Yandex Metrika call: ym("${id}", "${method}", ${argumentsText})`)
+            }
+          }
+        } else if (consoleLog) {
+          if (args.length === 0) {
+            console.log(`Yandex Metrika is not initialized! Failed to execute: ym("${id}", "${method}")`)
+          } else {
+            const argumentsText = args.map(a => JSON.stringify(a)).join(', ')
+            console.log(`Yandex Metrika is not initialized! Failed to execute: ym("${id}", "${method}", ${argumentsText})`)
+          }
+        }
+      }
+    }
   }
 })
