@@ -1,23 +1,33 @@
-# Yandex Metrika
+# Yandex Metrika for Nuxt 3
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
 
-> Add Yandex Metrika to your nuxt.js application.
+## Disclaimer
+This package is a fork for those who don't want to wait for the official release of a Yandex Metrika module.
 
-This plugin automatically sends first page and route change events to Yandex Metrika.
+The module is created by Nuxt Community and upgraded by dankerow to support Nuxt 3. All credit belongs to:
+
+- [Official Nuxt Community module for Yandex Metrika](https://github.com/nuxt-community/yandex-metrika-module)
+- [dankerow's fork of Yandex Metrika to support Nuxt 3](https://github.com/dankerow/yandex-metrika-module)
+
+> This package includes precompiled scripts to let people integrate Yandex Metrika into their project. There's no need to compile anything, it is ready to be used out of the box.
+
+## Route change events by default
+
+This module automatically sends first page and route change events to Yandex Metrika.
 
 **Note:** Yandex Metrika is not enabled in dev mode.
 You can set environment variable `NODE_ENV` to `production` for testing in dev mode.
 
 ## Setup
 
-- Add `@nuxtjs/yandex-metrika` dependency using yarn or npm to your project
-- Add `@nuxtjs/yandex-metrika` to `modules` section of `nuxt.config.js`
+- Add `yandex-metrika-module-nuxt3` dependency using yarn or npm to your project
+- Add `yandex-metrika-module-nuxt3` to `modules` section of `nuxt.config.js`
 
 ```js
 {
-  modules: ['@nuxtjs/yandex-metrika']
+  modules: ['yandex-metrika-module-nuxt3']
 }
 ```
 
@@ -29,7 +39,7 @@ You can pass options directly in module declaration:
 {
   modules: [
     [
-      '@nuxtjs/yandex-metrika',
+      'yandex-metrika-module-nuxt3',
       {
         id: 'XXXXXX',
         webvisor: true,
@@ -47,7 +57,7 @@ Or you can specify `yandexMetrika` key:
 
 ```js
 {
-  modules: ['@nuxtjs/yandex-metrika'],
+  modules: ['yandex-metrika-module-nuxt3'],
   yandexMetrika: {
     id: 'XXXXXX',
     // ...
@@ -59,7 +69,7 @@ In Nuxt 2.13+, you can also use public runtime config:
 
 ```js
 {
-  modules: ['@nuxtjs/yandex-metrika'],
+  modules: ['yandex-metrika-module-nuxt3'],
   publicRuntimeConfig: {
     yandexMetrika: {
       id: process.env.YANDEX_METRIKA_ID,

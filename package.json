@@ -1,15 +1,15 @@
 {
-  "name": "@nuxtjs/yandex-metrika",
+  "name": "yandex-metrika-module-nuxt3",
   "version": "1.4.0",
-  "description": "Add Yandex Metrika to your Nuxt application.",
+  "description": "Add Yandex Metrika to your Nuxt 3 application.",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nuxt-community/yandex-metrika-module.git"
+    "url": "git+https://github.com/digitalcortex/yandex-metrika-module-nuxt3.git"
   },
-  "homepage": "nuxt-community/yandex-metrika-module",
+  "homepage": "digitalcortex/yandex-metrika-module-nuxt3",
   "bugs": {
-    "url": "https://github.com/nuxt-community/yandex-metrika-module/issues"
+    "url": "https://github.com/digitalcortex/yandex-metrika-module-nuxt3/issues"
   },
   "exports": {
     ".": {
