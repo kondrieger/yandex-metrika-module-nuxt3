@@ -39,12 +39,11 @@ export default defineNuxtPlugin(async ({ _ }) => {
         return
       }
       if (consoleLog) {
-        console.log(`Yandex Metrika page hit: "${to.fullPath}" (referer="${from.fullPath}", title="${to.meta.title}")`)
+        console.log(`Yandex Metrika page hit: "${to.fullPath}" (referer="${from.fullPath}")`)
       }
       if (!isDev) {
         ym(id, 'hit', to.fullPath, {
-          referer: /* basePath + */from.fullPath,
-          title: to.meta.title
+          referer: /* basePath + */from.fullPath
         })
       }
     })
