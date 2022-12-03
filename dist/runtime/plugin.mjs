@@ -1,19 +1,13 @@
 import { defineNuxtPlugin, useRuntimeConfig } from "#app";
-import { isVue2, useRouter } from "#imports";
+import { useRouter } from "#imports";
 import options from "#build/yandex-metrika.options.mjs";
 export default defineNuxtPlugin(async ({ _ }) => {
   const { id, metrikaUrl, ...metrikaOptions } = await options();
   let ready = false;
   const basePath = useRuntimeConfig().app.basePath;
-  if (isVue2) {
-    useRouter().onReady(() => {
-      ready = true;
-    });
-  } else {
-    useRouter().isReady().then(() => {
-      ready = true;
-    });
-  }
+  useRouter().isReady().then(() => {
+    ready = true;
+  });
   function create() {
     if (!ready) {
       (function(m, e, t, r, i, k, a) {

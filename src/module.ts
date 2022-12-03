@@ -82,7 +82,12 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
     }
 
     // Script preload
-    getMeta().link.push({
+    const head = nuxt.options.app.head
+    if (!head.link) {
+      head.link = []
+    }
+
+    head.link.push({
       href: options.metrikaUrl,
       rel: 'preload',
       as: 'script'

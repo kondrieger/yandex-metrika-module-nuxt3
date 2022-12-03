@@ -2,7 +2,7 @@
   "name": "yandex-metrika-module-nuxt3",
   "configKey": "yandexMetrika",
   "compatibility": {
-    "bridge": true
+    "nuxt": ">=3.0.0"
   },
-  "version": "1.4.3"
+  "version": "1.4.4"
 }

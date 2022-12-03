@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'url';
 import { resolve } from 'pathe';
-import { useLogger, defineNuxtModule, addTemplate, addPlugin, isNuxt2 } from '@nuxt/kit';
+import { useLogger, defineNuxtModule, addTemplate, addPlugin } from '@nuxt/kit';
 import defu from 'defu';
 
 const logger = useLogger("nuxt:yandex-metrika");
@@ -10,7 +10,7 @@ const module = defineNuxtModule({
     name: "yandex-metrika-module-nuxt3",
     configKey: CONFIG_KEY,
     compatibility: {
-      bridge: true
+      nuxt: ">=3.0.0"
     }
   },
   defaults: {
@@ -45,20 +45,11 @@ const module = defineNuxtModule({
         return `export default () => Promise.resolve(${JSON.stringify(options.useRuntimeConfig ? nuxt.options.runtimeConfig.public[CONFIG_KEY] : options || {})})`;
       }
     });
-    const getMeta = () => {
-      if (isNuxt2()) {
-        nuxt.options.head = nuxt.options.head || {};
-        nuxt.options.head.link = nuxt.options.head.link || [];
-      } else {
-        nuxt.options.app.head.link = nuxt.options.app.head.link || [];
-      }
-      if (isNuxt2()) {
-        return nuxt.options.head;
-      } else {
-        return nuxt.options.app.head;
-      }
-    };
-    getMeta().link.push({
+    const head = nuxt.options.app.head;
+    if (!head.link) {
+      head.link = [];
+    }
+    head.link.push({
       href: options.metrikaUrl,
       rel: "preload",
       as: "script"
