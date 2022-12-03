@@ -19,6 +19,7 @@ interface YandexMetrikaModuleOptions extends ModuleOptions {
     type?: number;
     webvisor?: boolean;
     triggerEvent?: boolean;
+    consoleLog?: boolean;
 }
 declare const _default: _nuxt_schema.NuxtModule<YandexMetrikaModuleOptions>;
 

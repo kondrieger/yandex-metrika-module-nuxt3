@@ -22,6 +22,7 @@ export interface YandexMetrikaModuleOptions extends ModuleOptions {
   type?: number,
   webvisor?: boolean,
   triggerEvent?: boolean,
+  consoleLog?: boolean
 }
 
 const logger = useLogger('nuxt:yandex-metrika')
@@ -47,14 +48,14 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
     trackLinks: true,
     type: 0,
     webvisor: false,
-    triggerEvent: false
+    triggerEvent: false,
+    consoleLog: true
   },
-  setup (options: ModuleOptions, nuxt) {
-    // Don't include on dev mode
-    if (nuxt.options.dev && process.env.NODE_ENV !== 'production') {
-      logger.info('Module not enabled because you are in dev mode.')
-      return
-    }
+  setup (options: YandexMetrikaModuleOptions, nuxt) {
+    const isDev = (nuxt.options.dev && process.env.NODE_ENV !== 'production')
+    options.isDev = isDev
+
+    logger.info(`Initializing Yandex Metrika in ${isDev ? 'development' : 'production'} mode`)
 
     if (!options.id) {
       logger.error('No id provided.')
@@ -76,22 +77,20 @@ export default defineNuxtModule<YandexMetrikaModuleOptions>({
       }
     })
 
-    const getMeta = () => {
-      nuxt.options.app.head.link = nuxt.options.app.head.link || []
-      return nuxt.options.app.head
-    }
-
     // Script preload
     const head = nuxt.options.app.head
     if (!head.link) {
       head.link = []
     }
 
-    head.link.push({
-      href: options.metrikaUrl,
-      rel: 'preload',
-      as: 'script'
-    })
+    logger.debug(`Yandex Metrika script URL: ${options.metrikaUrl}`)
+    if (!isDev) {
+      head.link.push({
+        href: options.metrikaUrl,
+        rel: 'preload',
+        as: 'script'
+      })
+    }
 
     const runtimeDir = fileURLToPath(new URL('./runtime', import.meta.url))
 

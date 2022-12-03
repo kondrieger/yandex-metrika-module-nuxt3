@@ -44,6 +44,7 @@ You can pass options directly in module declaration:
       {
         id: 'XXXXXX',
         webvisor: true,
+        // consoleLog: true,
         // clickmap: true,
         // useCDN: false,
         // trackLinks: true,

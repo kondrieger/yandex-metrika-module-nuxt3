@@ -6,6 +6,7 @@ export default defineNuxtConfig({
   ],
   yandexMetrika: {
     id: 'XXXXXX',
-    useRuntimeConfig: true
+    useRuntimeConfig: true,
+    consoleLog: true
   }
 })
