@@ -21,7 +21,6 @@ export default defineNuxtPlugin(async ({ _ }) => {
           k.src = r;
           a.parentNode.insertBefore(k, a);
         })(window, document, "script", metrikaUrl, "ym");
-        yandexMetrikaInstance = ym;
         ym(id, "init", metrikaOptions);
       }
       if (consoleLog) {
