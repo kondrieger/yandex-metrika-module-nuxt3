@@ -37,7 +37,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@nuxt/kit": "^3.0.0",
+    "@nuxt/kit": "3.0.0-rc.9",
     "defu": "^6.1.1",
     "pathe": "^1.0.0"
   },
