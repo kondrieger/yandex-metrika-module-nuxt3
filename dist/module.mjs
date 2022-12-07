@@ -42,7 +42,9 @@ const module = defineNuxtModule({
     addTemplate({
       filename: "yandex-metrika.options.mjs",
       getContents: () => {
-        return `export default () => Promise.resolve(${JSON.stringify(options.useRuntimeConfig ? nuxt.options.runtimeConfig.public[CONFIG_KEY] : options || {})})`;
+        return `export default () => Promise.resolve(${JSON.stringify(
+          options.useRuntimeConfig ? nuxt.options.runtimeConfig.public[CONFIG_KEY] : options || {}
+        )})`;
       }
     });
     const head = nuxt.options.app.head;
