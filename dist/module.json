@@ -1,0 +1,8 @@
+{
+  "name": "yandex-metrika-module-nuxt3",
+  "configKey": "yandexMetrika",
+  "compatibility": {
+    "nuxt": ">=3.0.0-rc.9"
+  },
+  "version": "1.4.8"
+}
