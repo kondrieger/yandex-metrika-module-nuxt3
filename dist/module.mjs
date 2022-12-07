@@ -10,7 +10,7 @@ const module = defineNuxtModule({
     name: "yandex-metrika-module-nuxt3",
     configKey: CONFIG_KEY,
     compatibility: {
-      nuxt: ">=3.0.0"
+      nuxt: ">=3.0.0-rc.9"
     }
   },
   defaults: {
@@ -31,13 +31,18 @@ const module = defineNuxtModule({
   setup(options, nuxt) {
     const isDev = nuxt.options.dev && process.env.NODE_ENV !== "production";
     options.isDev = isDev;
-    logger.info(`Initializing Yandex Metrika in ${isDev ? "development" : "production"} mode`);
+    logger.info(
+      `Initializing Yandex Metrika in ${isDev ? "development" : "production"} mode`
+    );
     if (!options.id) {
       logger.error("No id provided.");
     }
     options.metrikaUrl = (options.useCDN ? "https://cdn.jsdelivr.net/npm/yandex-metrica-watch" : options.metrikaUrl) + "/tag.js";
     if (options.useRuntimeConfig) {
-      nuxt.options.runtimeConfig.public[CONFIG_KEY] = defu(nuxt.options.runtimeConfig.public[CONFIG_KEY], options);
+      nuxt.options.runtimeConfig.public[CONFIG_KEY] = defu(
+        nuxt.options.runtimeConfig.public[CONFIG_KEY],
+        options
+      );
     }
     addTemplate({
       filename: "yandex-metrika.options.mjs",
